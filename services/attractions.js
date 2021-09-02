@@ -1,8 +1,10 @@
-
+const getAttractions =
+   require('../repository/attractions-repository').getAttractions;
 class AttractionsService {
-	constructor() {
-		this.collectionName = 'sync_tracking_paypal';
-	}
+   constructor() {}
 
+   getAttractions() {
+      return getAttractions();
+   }
 }
 module.exports = new AttractionsService();
