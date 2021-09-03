@@ -9,6 +9,18 @@ async function getAttractions(params = {}) {
       .toArray();
 }
 
+async function updateAttractionFavoriteStatus(id, favoriteStatus) {
+   const client = await getMongoClient();
+
+   const updateParams = { _id: id };
+
+   return client
+      .db('sample-db')
+      .collection('attractions')
+      .updateOne(updateParams, { $set: { isFavorite: favoriteStatus } });
+}
+
 module.exports = {
    getAttractions,
+   updateAttractionFavoriteStatus
 };

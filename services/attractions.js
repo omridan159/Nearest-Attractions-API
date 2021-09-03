@@ -1,10 +1,13 @@
-const getAttractions =
-   require('../repository/attractions-repository').getAttractions;
+const attractionsRepo = require('../repository/attractions-repository');
 class AttractionsService {
    constructor() {}
 
    getAttractions() {
-      return getAttractions();
+      return attractionsRepo.getAttractions();
+   }
+
+   updateOneAttraction(id, favoriteStatus) {
+      return attractionsRepo.updateAttractionFavoriteStatus(id, favoriteStatus);
    }
 }
 module.exports = new AttractionsService();
