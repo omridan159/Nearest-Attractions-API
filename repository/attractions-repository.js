@@ -13,14 +13,13 @@ async function updateAttractionFavoriteStatus(id, favoriteStatus) {
    const client = await getMongoClient();
 
    const updateParams = { _id: id };
-
    return client
       .db('sample-db')
       .collection('attractions')
-      .updateOne(updateParams, { $set: { isFavorite: favoriteStatus } });
+      .updateOne(updateParams, { $set: { favorite: favoriteStatus } });
 }
 
 module.exports = {
    getAttractions,
-   updateAttractionFavoriteStatus
+   updateAttractionFavoriteStatus,
 };

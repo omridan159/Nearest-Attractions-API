@@ -1,9 +1,17 @@
 const attractionsRepo = require('../repository/attractions-repository');
+const helpers = require('../lib/helpers');
 class AttractionsService {
    constructor() {}
 
-   getAttractions() {
-      return attractionsRepo.getAttractions();
+   async getAttractions() {
+      const attractions = await attractionsRepo.getAttractions();
+      const unfavoriteAttractions =
+         helpers.getUnfavoriteAttractionsList(attractions);
+
+      return {
+         data: attractions,
+         unfavoriteAttractions,
+      };
    }
 
    updateOneAttraction(id, favoriteStatus) {
