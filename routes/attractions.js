@@ -1,21 +1,5 @@
 const AttractionsService = require('../services/attractions');
-let attractionsError = {
-   error: true,
-   name: 'attractionsError',
-   message: 'Failed to retrive the attractions data',
-};
-
-let updateOneAttractionError = {
-   error: true,
-   name: 'updateOneAttraction',
-   message: 'Failed to update the attractions data',
-};
-
-let updateOneAttractionSuccess = {
-   error: false,
-   name: 'updateOneAttraction',
-   message: 'Successfuly update the attractions data',
-};
+const responses = require('../lib/responses');
 
 class AttractionsRoute {
    constructor(router) {
@@ -33,7 +17,7 @@ class AttractionsRoute {
 
       AttractionsService.getAttractions()
          .then((data) => res.send(data))
-         .catch(() => res.status(404).send(attractionsError));
+         .catch(() => res.status(404).send(responses.getAttractionsError));
    }
 
    updateOneAttraction(req, res, next) {
@@ -43,9 +27,15 @@ class AttractionsRoute {
 
       AttractionsService.updateOneAttraction(id, favoriteStatus)
          .then(() =>
-            res.send({ ...updateOneAttractionSuccess, id, favoriteStatus })
+            res.send({
+               ...responses.updateOneAttractionSuccess,
+               id,
+               favoriteStatus,
+            })
          )
-         .catch(() => res.status(404).send(updateOneAttractionError));
+         .catch(() =>
+            res.status(404).send(responses.updateOneAttractionError)
+         );
    }
 }
 
