@@ -5,7 +5,7 @@
 - Retrieve attractions from the database.
 - Return unfavorite attractions list.
 - Retrieve the types of attractions.
-- Updating the attraction favorite status.
+- Update the attraction favorite status.
 
 ## Tech
 
