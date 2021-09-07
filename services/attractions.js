@@ -7,10 +7,13 @@ class AttractionsService {
       const attractions = await attractionsRepo.getAttractions();
       const unfavoriteAttractions =
          helpers.getUnfavoriteAttractionsList(attractions);
+      const attractionsTypes = helpers.getAttractionsTypes(attractions);
+
 
       return {
          data: attractions,
          unfavoriteAttractions,
+         attractionsTypes
       };
    }
 
