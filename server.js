@@ -23,6 +23,9 @@ app.all('*', (req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.get('/', (req, res) => {
+   res.send('Hello World!');
+});
 app.use('/', apiRouter);
 
 app.listen(process.env.PORT || 5000, () => {
