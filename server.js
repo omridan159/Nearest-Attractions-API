@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', apiRouter);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
    console.log(
       `Attractions API is running at ${process.env.DNS}:${process.env.PORT}`
    );
